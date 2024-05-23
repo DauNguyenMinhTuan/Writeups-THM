@@ -7,6 +7,7 @@
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
 2. Introduction to Offensive Security
+   * Web Application Security - [View Room](introwebapplicationsecurity)
 3. Introduction to Defensive Security
 
 ## Categories
