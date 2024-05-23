@@ -1,4 +1,15 @@
-> This is where we keep track of every writeups exist
+# Writeups Tracker
+
+***This is where we keep track of every writeups exist***
+
+## Learning Paths
+
+### Introduction to Cyber Security
+1. Introduction to Cyber Security
+2. Introduction to Offensive Security
+3. Introduction to Defensive Security
+
+## Categories
 
 ### Advent of Cyber
 * 25 Days of Cyber Security (start from Day 12) - [View Room](LearnCyberIn25Days)
