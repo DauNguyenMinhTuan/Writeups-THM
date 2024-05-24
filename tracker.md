@@ -11,6 +11,7 @@
    * Operating System Security - [View Room](operatingsystemsecurity)
    * Network Security - [View Room](intronetworksecurity)
 3. Introduction to Defensive Security
+   * Intro to Digital Forensics - [View Room](introdigitalforensics)
 
 ## Categories
 
