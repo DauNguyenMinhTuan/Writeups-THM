@@ -4,6 +4,11 @@
 
 ## Learning Paths
 
+### Complete Beginner
+1. Complete Beginner Introduction
+   * Tutorial
+   * Starting Out In Cyber Sec - [View Room](startingoutincybersec)
+
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
 2. Introduction to Offensive Security
