@@ -8,6 +8,7 @@
 1. Complete Beginner Introduction
    * Tutorial
    * Starting Out In Cyber Sec - [View Room](startingoutincybersec)
+   * Introductory Researching - [View Room](introtoresearch)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
