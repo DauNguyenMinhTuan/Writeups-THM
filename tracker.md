@@ -9,6 +9,12 @@
    * Tutorial
    * Starting Out In Cyber Sec - [View Room](startingoutincybersec)
    * Introductory Researching - [View Room](introtoresearch)
+2. Linux Fundamentals
+   * Linux Fundamentals Part 1
+   * Linux Fundamentals Part 2
+   * Linux Fundamentals Part 3
+3. Network Exploration Basics
+   * Introductory Networking - [View Room](introtonetworking)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
