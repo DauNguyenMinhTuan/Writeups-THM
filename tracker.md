@@ -15,6 +15,7 @@
    * Linux Fundamentals Part 3
 3. Network Exploration Basics
    * Introductory Networking - [View Room](introtonetworking)
+   * Nmap - [View Room](furthernmap)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
