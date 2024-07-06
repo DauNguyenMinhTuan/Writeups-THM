@@ -17,6 +17,7 @@
    * Introductory Networking - [View Room](introtonetworking)
    * Nmap - [View Room](furthernmap)
    * Network Services - [View Room](networkservices)
+   * Network Services 2 - [View Room](networkservices2)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
