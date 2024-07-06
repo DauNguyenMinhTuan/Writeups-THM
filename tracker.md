@@ -18,6 +18,9 @@
    * Nmap - [View Room](furthernmap)
    * Network Services - [View Room](networkservices)
    * Network Services 2 - [View Room](networkservices2)
+4. Web Hacking Fundametals
+   * How Websites Work
+   * HTTP in Detail
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
