@@ -21,6 +21,7 @@
 4. Web Hacking Fundametals
    * How Websites Work
    * HTTP in Detail
+   * Burp Suite: The Basics - [View Room](burpsuitebasics)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
