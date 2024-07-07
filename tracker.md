@@ -22,6 +22,7 @@
    * How Websites Work
    * HTTP in Detail
    * Burp Suite: The Basics - [View Room](burpsuitebasics)
+   * OWASP Top 10 - 2021 - [View Room](owasptop102021)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
