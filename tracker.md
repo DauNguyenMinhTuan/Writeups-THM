@@ -26,6 +26,8 @@
    * OWASP Juice Shop - [View Room](owaspjuiceshop)
    * Upload Vulnerabilities - [View Room](uploadvulns)
    * Pickle Rick - [View Room](picklerick)
+5. Cryptography
+   * Hashing - Crypto 101 - [View Room](hashingcrypto101)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
