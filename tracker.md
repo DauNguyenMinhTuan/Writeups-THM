@@ -28,6 +28,7 @@
    * Pickle Rick - [View Room](picklerick)
 5. Cryptography
    * Hashing - Crypto 101 - [View Room](hashingcrypto101)
+   * John The Ripper - [View Room](johntheripper0)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
