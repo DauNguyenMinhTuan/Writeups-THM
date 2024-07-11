@@ -25,6 +25,7 @@
    * OWASP Top 10 - 2021 - [View Room](owasptop102021)
    * OWASP Juice Shop - [View Room](owaspjuiceshop)
    * Upload Vulnerabilities - [View Room](uploadvulns)
+   * Pickle Rick - [View Room](picklerick)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
