@@ -29,6 +29,7 @@
 5. Cryptography
    * Hashing - Crypto 101 - [View Room](hashingcrypto101)
    * John The Ripper - [View Room](johntheripper0)
+   * Encryption - Crypto 101 - [View Room](encryptioncrypto101)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
