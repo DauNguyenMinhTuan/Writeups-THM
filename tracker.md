@@ -35,6 +35,7 @@
    * Windows Fundamentals 2
    * Active Directory Basics - [View Room](winadbasics)
    * Metasploit: Introduction - [View Room](metasploitintro)
+   * Metasploit: Exploitation - [View Room](metasploitexploitation)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
