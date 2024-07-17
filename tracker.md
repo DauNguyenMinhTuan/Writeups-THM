@@ -37,6 +37,7 @@
    * Metasploit: Introduction - [View Room](metasploitintro)
    * Metasploit: Exploitation - [View Room](metasploitexploitation)
    * Metasploit: Meterpreter - [View Room](meterpreter)
+   * Blue - [View Room](blue)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
