@@ -38,6 +38,8 @@
    * Metasploit: Exploitation - [View Room](metasploitexploitation)
    * Metasploit: Meterpreter - [View Room](meterpreter)
    * Blue - [View Room](blue)
+7. Shells and Privilege Escalation
+   * What the Shell? - [View Room](introtoshells)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
