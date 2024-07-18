@@ -44,6 +44,7 @@
    * Linux PrivEsc
 8. Basic Computer Exploitation
    * Vulnversity - [View Room](vulnversity)
+   * Basic Pentesting - [View Room](basicpentestingjt)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
