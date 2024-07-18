@@ -41,6 +41,7 @@
 7. Shells and Privilege Escalation
    * What the Shell? - [View Room](introtoshells)
    * Common Linux Privesc - [View Room](commonlinuxprivesc)
+   * Linux PrivEsc
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
