@@ -42,6 +42,8 @@
    * What the Shell? - [View Room](introtoshells)
    * Common Linux Privesc - [View Room](commonlinuxprivesc)
    * Linux PrivEsc
+8. Basic Computer Exploitation
+   * Vulnversity - [View Room](vulnversity)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
