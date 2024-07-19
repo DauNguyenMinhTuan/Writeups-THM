@@ -58,6 +58,13 @@
    * Intro to Digital Forensics - [View Room](introdigitalforensics)
    * Security Operations - [View Room](securityoperations)
 
+### Web Fundamentals
+1. How The Web Works
+   * DNS in detail
+   * HTTP in detail
+   * How Websites Work
+   * Putting it all together
+
 ## Categories
 
 ### Advent of Cyber
