@@ -46,6 +46,7 @@
    * Vulnversity - [View Room](vulnversity)
    * Basic Pentesting - [View Room](basicpentestingjt)
    * Kenobi - [View Room](kenobi)
+   * Steel Mountain - [View Room](steelmountain)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
