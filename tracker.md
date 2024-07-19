@@ -67,6 +67,7 @@
 2. Introduction to Web Hacking
    * Walking An Application - [View Room](walkinganapplication)
    * Content Discovery - [View Room](contentdiscovery)
+   * Subdomain Enumeration - [View Room](subdomainenumeration)
 
 ## Categories
 
