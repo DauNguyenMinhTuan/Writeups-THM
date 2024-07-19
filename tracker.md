@@ -64,6 +64,8 @@
    * HTTP in detail
    * How Websites Work
    * Putting it all together
+2. Introduction to Web Hacking
+   * Walking An Application - [View Room](walkinganapplication)
 
 ## Categories
 
