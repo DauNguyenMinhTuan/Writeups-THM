@@ -69,6 +69,7 @@
    * Content Discovery - [View Room](contentdiscovery)
    * Subdomain Enumeration - [View Room](subdomainenumeration)
    * Authentication Bypass - [View Room](authenticationbypass)
+   * IDOR - [View Room](idor)
 
 ## Categories
 
