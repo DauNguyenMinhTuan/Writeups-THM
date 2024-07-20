@@ -71,6 +71,7 @@
    * Authentication Bypass - [View Room](authenticationbypass)
    * IDOR - [View Room](idor)
    * File Inclusion - [View Room](fileinc)
+   * Intro to SSRF - [View Room](ssrfqi)
 
 ## Categories
 
