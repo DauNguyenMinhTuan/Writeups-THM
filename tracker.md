@@ -72,6 +72,7 @@
    * IDOR - [View Room](idor)
    * File Inclusion - [View Room](fileinc)
    * Intro to SSRF - [View Room](ssrfqi)
+   * Intro to Cross-site Scripting - [View Room](xss)
 
 ## Categories
 
