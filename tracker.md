@@ -74,6 +74,9 @@
    * Intro to SSRF - [View Room](ssrfqi)
    * Intro to Cross-site Scripting - [View Room](xss)
    * Command Injection - [View Room](oscommandinjection)
+   * SQL Injection
+3. Burp Suite
+   * Burp Suite: The Basics - [View Room](burpsuitebasics)
 
 ## Categories
 
