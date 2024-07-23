@@ -73,6 +73,7 @@
    * File Inclusion - [View Room](fileinc)
    * Intro to SSRF - [View Room](ssrfqi)
    * Intro to Cross-site Scripting - [View Room](xss)
+   * Command Injection - [View Room](oscommandinjection)
 
 ## Categories
 
