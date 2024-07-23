@@ -81,6 +81,14 @@
    * Burp Suite: Intruder - [View Room](burpsuiteintruder)
    * Burp Suite: Other Modules - [View Room](burpsuiteom)
    * Burp Suite: Extensions - [View Room](burpsuiteextensions)
+4. Web Hacking Fundamentals
+   * How Websites Work
+   * HTTP in Detail
+   * Burp Suite: The Basics - [View Room](burpsuitebasics)
+   * OWASP Top 10 - 2021 - [View Room](owasptop102021)
+   * OWASP Juice Shop - [View Room](owaspjuiceshop)
+   * Upload Vulnerabilities - [View Room](uploadvulns)
+   * Pickle Rick - [View Room](picklerick)
 
 ## Categories
 
