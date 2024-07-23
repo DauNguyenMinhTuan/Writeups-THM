@@ -80,6 +80,7 @@
    * Burp Suite: Repeater - [View Room](burpsuiterepeater)
    * Burp Suite: Intruder - [View Room](burpsuiteintruder)
    * Burp Suite: Other Modules - [View Room](burpsuiteom)
+   * Burp Suite: Extensions - [View Room](burpsuiteextensions)
 
 ## Categories
 
