@@ -77,6 +77,7 @@
    * SQL Injection
 3. Burp Suite
    * Burp Suite: The Basics - [View Room](burpsuitebasics)
+   * Burp Suite: Repeater - [View Room](burpsuiterepeater)
 
 ## Categories
 
