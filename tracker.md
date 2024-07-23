@@ -78,6 +78,7 @@
 3. Burp Suite
    * Burp Suite: The Basics - [View Room](burpsuitebasics)
    * Burp Suite: Repeater - [View Room](burpsuiterepeater)
+   * Burp Suite: Intruder - [View Room](burpsuiteintruder)
 
 ## Categories
 
