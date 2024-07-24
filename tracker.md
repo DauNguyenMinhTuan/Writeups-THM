@@ -85,6 +85,7 @@
    * Burp Suite: Extensions - [View Room](burpsuiteextensions)
 5. Network Security
    * Passive Reconnaisance - [View Room](passiverecon)
+   * Active Reconnaisance - [View Room](activerecon)
 
 ### Web Fundamentals
 1. How The Web Works
