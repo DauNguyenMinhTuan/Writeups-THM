@@ -66,6 +66,23 @@
 2. Introduction to Pentesting
    * Pentesting Fundamentals - [View Room](pentestingfundamentals)
    * Principles of Security - [View Room](principlesofsecurity)
+3. Introduction to Web Hacking
+   * Walking An Application - [View Room](walkinganapplication)
+   * Content Discovery - [View Room](contentdiscovery)
+   * Subdomain Enumeration - [View Room](subdomainenumeration)
+   * Authentication Bypass - [View Room](authenticationbypass)
+   * IDOR - [View Room](idor)
+   * File Inclusion - [View Room](fileinc)
+   * Intro to SSRF - [View Room](ssrfqi)
+   * Intro to Cross-site Scripting - [View Room](xss)
+   * Command Injection - [View Room](oscommandinjection)
+   * SQL Injection
+4. Burp Suite
+   * Burp Suite: The Basics - [View Room](burpsuitebasics)
+   * Burp Suite: Repeater - [View Room](burpsuiterepeater)
+   * Burp Suite: Intruder - [View Room](burpsuiteintruder)
+   * Burp Suite: Other Modules - [View Room](burpsuiteom)
+   * Burp Suite: Extensions - [View Room](burpsuiteextensions)
 
 ### Web Fundamentals
 1. How The Web Works
