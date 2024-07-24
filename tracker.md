@@ -63,6 +63,8 @@
    * Intro to Offensive Security
    * Intro to Defensive Security
    * Careers in Cyber
+2. Introduction to Pentesting
+   * Pentesting Fundamentals - [View Room](pentestingfundamentals)
 
 ### Web Fundamentals
 1. How The Web Works
