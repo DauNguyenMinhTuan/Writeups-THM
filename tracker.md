@@ -65,6 +65,7 @@
    * Careers in Cyber
 2. Introduction to Pentesting
    * Pentesting Fundamentals - [View Room](pentestingfundamentals)
+   * Principles of Security - [View Room](principlesofsecurity)
 
 ### Web Fundamentals
 1. How The Web Works
