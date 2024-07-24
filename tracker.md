@@ -83,6 +83,8 @@
    * Burp Suite: Intruder - [View Room](burpsuiteintruder)
    * Burp Suite: Other Modules - [View Room](burpsuiteom)
    * Burp Suite: Extensions - [View Room](burpsuiteextensions)
+5. Network Security
+   * Passive Reconnaisance - [View Room](passiverecon)
 
 ### Web Fundamentals
 1. How The Web Works
