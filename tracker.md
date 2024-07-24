@@ -58,6 +58,12 @@
    * Intro to Digital Forensics - [View Room](introdigitalforensics)
    * Security Operations - [View Room](securityoperations)
 
+### Jr Penetration Tester
+1. Introduction to Cyber Security
+   * Intro to Offensive Security
+   * Intro to Defensive Security
+   * Careers in Cyber
+
 ### Web Fundamentals
 1. How The Web Works
    * DNS in detail
