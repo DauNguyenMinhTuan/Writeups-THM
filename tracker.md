@@ -87,6 +87,7 @@
    * Passive Reconnaisance - [View Room](passiverecon)
    * Active Reconnaisance - [View Room](activerecon)
    * Nmap Live Host Discovery - [View Room](nmap01)
+   * Nmap Basic Port Scans - [View Room](nmap02)
 
 ### Web Fundamentals
 1. How The Web Works
