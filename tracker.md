@@ -90,6 +90,7 @@
    * Nmap Basic Port Scans - [View Room](nmap02)
    * Nmap Advanced Port Scans - [View Room](nmap03)
    * Nmap Post Port Scans - [View Room](nmap04)
+   * Protocols and Servers - [View Room](protocolsandservers)
 
 ### Web Fundamentals
 1. How The Web Works
