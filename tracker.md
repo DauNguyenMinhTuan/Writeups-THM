@@ -86,6 +86,7 @@
 5. Network Security
    * Passive Reconnaisance - [View Room](passiverecon)
    * Active Reconnaisance - [View Room](activerecon)
+   * Nmap Live Host Discovery - [View Room](nmap01)
 
 ### Web Fundamentals
 1. How The Web Works
