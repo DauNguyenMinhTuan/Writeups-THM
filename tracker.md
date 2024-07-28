@@ -92,6 +92,7 @@
    * Nmap Post Port Scans - [View Room](nmap04)
    * Protocols and Servers - [View Room](protocolsandservers)
    * Protocols and Servers 2 - [View Room](protocolsandservers2)
+   * Net Sec Challenge - [View Room](netsecchallenge)
 
 ### Web Fundamentals
 1. How The Web Works
