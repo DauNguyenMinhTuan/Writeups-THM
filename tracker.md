@@ -96,6 +96,7 @@
 6. Vulnerability Research
    * Vulnerabilities 101 - [View Room](vulnerabilities101)
    * Exploit Vulnerabilities - [View Room](exploitingavulnerabilityv2)
+   * Vulnerability Capstone - [View Room](vulnerabilitycapstone)
 
 ### Web Fundamentals
 1. How The Web Works
