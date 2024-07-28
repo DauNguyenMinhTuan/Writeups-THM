@@ -93,6 +93,8 @@
    * Protocols and Servers - [View Room](protocolsandservers)
    * Protocols and Servers 2 - [View Room](protocolsandservers2)
    * Net Sec Challenge - [View Room](netsecchallenge)
+6. Vulnerability Research
+   * Vulnerabilities 101 - [View Room](vulnerabilities101)
 
 ### Web Fundamentals
 1. How The Web Works
