@@ -48,6 +48,10 @@
    * Kenobi - [View Room](kenobi)
    * Steel Mountain - [View Room](steelmountain)
 
+### CompTIA Pentest+
+1. Planning and Scoping
+   * Pentesting Fundamentals - [View Room](pentestingfundamentals)
+
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
 2. Introduction to Offensive Security
