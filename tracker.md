@@ -104,6 +104,7 @@
 8. Privilege Escalation
    * What the Shell? - [View Room](introtoshells)
    * Linux Privilege Escalation
+   * Windows Privilege Escalation - [View Room](windowsprivesc20)
 
 ### Web Fundamentals
 1. How The Web Works
