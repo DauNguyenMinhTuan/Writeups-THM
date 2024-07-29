@@ -51,6 +51,7 @@
 ### CompTIA Pentest+
 1. Planning and Scoping
    * Pentesting Fundamentals - [View Room](pentestingfundamentals)
+   * Red Team Engagements - [View Room](redteamengagements)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
