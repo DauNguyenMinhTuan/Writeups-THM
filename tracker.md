@@ -97,6 +97,13 @@
    * Vulnerabilities 101 - [View Room](vulnerabilities101)
    * Exploit Vulnerabilities - [View Room](exploitingavulnerabilityv2)
    * Vulnerability Capstone - [View Room](vulnerabilitycapstone)
+7. Metasploit
+   * Metasploit: Introduction - [View Room](metasploitintro)
+   * Metasploit: Exploitation - [View Room](metasploitexploitation)
+   * Metasploit: Meterpreter - [View Room](meterpreter)
+8. Privilege Escalation
+   * What the Shell? - [View Room](introtoshells)
+   * Linux Privilege Escalation
 
 ### Web Fundamentals
 1. How The Web Works
