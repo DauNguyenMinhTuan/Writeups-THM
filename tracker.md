@@ -56,6 +56,7 @@
 2. Tools and Code Analysis
    * Metasploit: Introduction - [View Room](metasploitintro)
    * Wireshark: The Basics - [View Room](wiresharkthebasics)
+   * Burp Suite: The Basics - [View Room](burpsuitebasics)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
