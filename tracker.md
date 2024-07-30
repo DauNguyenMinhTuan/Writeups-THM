@@ -53,6 +53,8 @@
    * Pentesting Fundamentals - [View Room](pentestingfundamentals)
    * Red Team Engagements - [View Room](redteamengagements)
    * Governance & Regumation - [View Room](cybergovernanceregulation)
+2. Tools and Code Analysis
+   * Metasploit: Introduction - [View Room](metasploitintro)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
