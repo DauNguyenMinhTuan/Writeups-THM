@@ -58,6 +58,8 @@
    * Wireshark: The Basics - [View Room](wiresharkthebasics)
    * Burp Suite: The Basics - [View Room](burpsuitebasics)
    * Hydra - [View Room](hydra)
+   * Python Basics
+   * Python for Pentesters
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
