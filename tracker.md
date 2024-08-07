@@ -60,6 +60,16 @@
    * Hydra - [View Room](hydra)
    * Python Basics
    * Python for Pentesters
+3. Information Gathering and Vulnerability Scanning
+   * Passive Reconnaissance - [View Room](passiverecon)
+   * Active Reconnaissance - [View Room](activerecon)
+   * Nmap Live Host Discovery - [View Room](nmap01)
+   * Nmap Basic Port Scans - [View Room](nmap02)
+   * Nmap Advanced Port Scans - [View Room](nmap03)
+4. Attacks and Exploits
+   * HTTP in Detail
+   * OWASP Top 10 - 2021 - [View Room](owasptop102021)
+   * OWASP Juice Shop - [View Room](owaspjuiceshop)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
