@@ -70,6 +70,7 @@
    * HTTP in Detail
    * OWASP Top 10 - 2021 - [View Room](owasptop102021)
    * OWASP Juice Shop - [View Room](owaspjuiceshop)
+   * Phishing - [View Room](phishingyl)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
