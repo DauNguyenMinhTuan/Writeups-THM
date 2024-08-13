@@ -72,6 +72,7 @@
    * OWASP Juice Shop - [View Room](owaspjuiceshop)
    * Phishing - [View Room](phishingyl)
    * Windows Privilege Escalation - [View Room](windowsprivesc20)
+   * Windows Local Persistence - [View Room](windowslocalpersistence)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
