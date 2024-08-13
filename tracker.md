@@ -172,5 +172,8 @@
 ### Reverse Engineering
 * Reversing ELF - [View Room](reverselfiles)
 
+### Scripting
+* Hacking with Powershell - [View Room](powershell)
+
 ### Web Exploitation
 * That's the Ticket - [View Room](thatstheticket)
