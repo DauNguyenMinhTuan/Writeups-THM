@@ -74,6 +74,7 @@
    * Windows Privilege Escalation - [View Room](windowsprivesc20)
    * Windows Local Persistence - [View Room](windowslocalpersistence)
    * Active Directory Basics - [View Room](winadbasics)
+   * Breaching Active Directory - [View Room](breachingad)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
