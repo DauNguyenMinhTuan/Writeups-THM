@@ -75,6 +75,7 @@
    * Windows Local Persistence - [View Room](windowslocalpersistence)
    * Active Directory Basics - [View Room](winadbasics)
    * Breaching Active Directory - [View Room](breachingad)
+   * Linux Privilege Escalation - [View Room](linuxprivesc)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
