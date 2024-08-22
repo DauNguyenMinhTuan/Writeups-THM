@@ -76,6 +76,7 @@
    * Active Directory Basics - [View Room](winadbasics)
    * Breaching Active Directory - [View Room](breachingad)
    * Linux Privilege Escalation - [View Room](linuxprivesc)
+   * Lateral Movement and Pivoting - [View Room](lateralmovementandpivoting)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
