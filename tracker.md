@@ -174,6 +174,10 @@
 ### Advent of Cyber
 * 25 Days of Cyber Security (start from Day 12) - [View Room](LearnCyberIn25Days)
 
+### Network
+* Enumeration Active Directory - [View Room](adenumeration)
+* Exploiting Active Directory - [View Room](exploitingad)
+
 ### Reverse Engineering
 * Reversing ELF - [View Room](reverselfiles)
 
