@@ -138,6 +138,15 @@
    * Linux Privilege Escalation
    * Windows Privilege Escalation - [View Room](windowsprivesc20)
 
+### Offensive Pentesting
+1. Getting Started
+   * Tutorial
+   * Vulnversity - [View Room](vulnversity)
+   * Blue - [View Room](blue)
+   * Kenobi - [View Room](kenobi)
+2. Advanced Exploitation
+   * Steel Mountain - [View Room](steelmountain)
+
 ### Web Fundamentals
 1. How The Web Works
    * DNS in detail
