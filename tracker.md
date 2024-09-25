@@ -146,6 +146,7 @@
    * Kenobi - [View Room](kenobi)
 2. Advanced Exploitation
    * Steel Mountain - [View Room](steelmountain)
+   * Alfred - [View Room](alfred)
 
 ### Web Fundamentals
 1. How The Web Works
