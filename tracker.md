@@ -78,6 +78,7 @@
    * Linux Privilege Escalation - [View Room](linuxprivesc)
    * Lateral Movement and Pivoting - [View Room](lateralmovementandpivoting)
    * Persisting Active Directory - [View Room](persistingad)
+   * Credentials Harvesting - [View Room](credharvesting)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
