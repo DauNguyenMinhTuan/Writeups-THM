@@ -148,6 +148,7 @@
    * Steel Mountain - [View Room](steelmountain)
    * Alfred - [View Room](alfred)
    * HackPark - This one sucks, no writeup
+   * Game Zone - [View Room](gamezone)
 
 ### Web Fundamentals
 1. How The Web Works
