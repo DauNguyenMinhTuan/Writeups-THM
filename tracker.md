@@ -150,6 +150,7 @@
    * HackPark - This one sucks, no writeup
    * Game Zone - [View Room](gamezone)
    * Skynet - [View Room](skynet)
+   * Daily Bugle - [View Room](dailybugle)
 
 ### Web Fundamentals
 1. How The Web Works
