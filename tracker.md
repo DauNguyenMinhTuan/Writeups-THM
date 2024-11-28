@@ -195,14 +195,12 @@
 ### Advent of Cyber
 * 25 Days of Cyber Security (start from Day 12) - [View Room](LearnCyberIn25Days)
 
-### Buffer Overflow
-* Buffer Overflows - [View Room](bof1)
-
 ### Network
 * Enumeration Active Directory - [View Room](adenumeration)
 * Exploiting Active Directory - [View Room](exploitingad)
 
 ### Reverse Engineering
+* Buffer Overflows - [View Room](bof1)
 * Reversing ELF - [View Room](reverselfiles)
 
 ### Scripting
