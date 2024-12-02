@@ -194,6 +194,7 @@
 
 ### Advent of Cyber
 * 25 Days of Cyber Security (start from Day 12) - [View Room](LearnCyberIn25Days)
+* Advent of Cyber 2024 - [View Room](adventofcyber2024)
 
 ### Network
 * Enumeration Active Directory - [View Room](adenumeration)
