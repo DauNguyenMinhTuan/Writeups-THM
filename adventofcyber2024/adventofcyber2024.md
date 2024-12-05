@@ -539,7 +539,7 @@ After just a few scrolls, we can set requests to a file named `shell.php` with `
 > **Answer format:** `/directory/directory/directory/filename.php`
 > Answer hint: Look at the `request` field in the logs.
 
-> **BLUE:** What IP address accessed the web shell?
+> **BLUE:** What IP address accessed the web shell?  
 > **Answer:** `10.11.83.34`
 
 Now that we know what happened, we need to recreate the attack to confirm the vulnerability. We will go to the website via the link provided.
@@ -591,5 +591,5 @@ Seems like we have RCE. And we even have sudo privileges. Let's check the files 
 
 ![](day_3-ls.png)
 
-> **RED:** What is the contents of the flag.txt?
+> **RED:** What is the contents of the flag.txt?  
 > We have seen the `flag.txt` file in the previous `ls` command. Check the contents with `cat` and we have the flag.
