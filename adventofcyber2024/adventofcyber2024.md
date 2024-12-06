@@ -12,6 +12,7 @@ Dive into the wonderful world of cyber security by engaging in festive beginner-
 * [[Log Analysis] Day 2: One man's false positive is another man's potpourri](#log-analysis-day-2-one-mans-false-positive-is-another-mans-potpourri)
 * [[Log Analysis] Day 3: Even if I wanted to go, their vulnerabilities wouldn't allow it](#log-analysis-day-3-even-if-i-wanted-to-go-their-vulnerabilities-wouldnt-allow-it)
 * [[Atomic Red Team] Day 4: I'm all atomic inside!](#atomic-red-team-day-4-im-all-atomic-inside)
+* [[XXE] Day 5: SOC-mas XX-what-ee?](#xxe-day-5-soc-mas-xx-what-ee)
 
 ## [OPSEC] Day 1: Maybe SOC-mas music, he thought, doesn't come from a store?
 
@@ -673,3 +674,148 @@ Quick overview of the parameters:
 
 > What is the flag found from this Atomic Test?
 > Run the test and find out.
+
+## [XXE] Day 5: SOC-mas XX-what-ee?
+
+### The Story
+
+The days in Wareville flew by, and Software's projects were nearly complete, just in time for Christmas. One evening, after wrapping up work, Software was strolling through the town when he came across a young boy looking dejected. Curious, Software asked, "What would you like for Christmas?" The boy replied with a sigh, "I wish for a teddy bear, but I know that my family can't afford one."
+
+This brief conversation sparked an idea in Software's mind - what if there was a platform where everyone in town could share their Christmas wishes, and the Mayor's office could help make them come true? Excited by the potential, Software introduced the idea to Mayor Malware, who embraced it immediately. The Mayor encouraged the team to build the platform for the people of Wareville.
+
+Through the developers' dedication and effort, the platform was soon ready and became an instant hit. The townspeople loved it! However, in their rush to meet the holiday deadline, the team had overlooked something critical - thorough security testing. Even Mayor Malware had chipped in to help develop a feature in the final hours. Now, it's up to us to ensure the application is secure and free of vulnerabilities. Can we guarantee the platform runs safely for the people of Wareville?
+
+### Learning Objectives
+
+* Undestand the basic concepts related to XML
+* Explore XML External Entity (XXE) and its components
+* Learn how to exploit the vulnerability
+* Understand remediate measures
+
+### Important Concepts
+
+#### Extensible Markup Language (XML)
+
+XML is a commonly used method to transport and store data in a structured format that humans and machines can easily understand.
+
+Consider a scenario where two computers need to communicate and share data. Both devices need to agree on a common format for exchanging information. This agreement is known as XML. We can think of XML as a digital filing cabinet. Just as a filing cabinet has folders with labelled documents inside, XML uses tags to label and organise information. These tags are like folders that define the type of data stored.
+
+This is what an XML looks like, a simple piece of text information organised in a structured manner:
+
+```xml
+<people>
+   <name>Glitch</name>
+   <address>Wareville</address>
+   <email>glitch@wareville.com</email>
+   <phone>111000</phone>
+</people>
+```
+
+#### Document Type Definition (DTD)
+
+Now that the two computers have agreed to share data in a common format, what about the structure of the format? Here is when the DTD comes into play. A DTD is a set of rules that defines the structure of an XML document.
+
+Just like a database scheme, it acts like a blueprint, telling us what elements (tags) and attributes are allowed in the XML file. Think of it as a guideline that ensures the XML document follows a specific structure.
+
+For example, if we want to ensure that an XML document about `people` will always include a `name`, `address`, `email`, and `phone number`, we would define those rules through a DTD as shown below:
+
+```xml
+<!DOCTYPE people [
+   <!ELEMENT people(name, address, email, phone)>
+   <!ELEMENT name (#PCDATA)>
+   <!ELEMENT address (#PCDATA)>
+   <!ELEMENT email (#PCDATA)>
+   <!ELEMENT phone (#PCDATA)>
+]>
+```
+
+In the above DTD, `<!ELEMENT>` defines the tags that are allowed, whereas `#PCDATA` stands for parsed character data, which means the data inside the tags will be parsed as text.
+
+#### Entities
+
+So far, both computers have agreed on the format, the structure of data, and the type of data they will share. Entities in XML are placeholders that allow the insertion of large chunks of data or referencing internal or external files. They assist in making the XML file easy to manage, especially when the same data is repeated multiple times. Entities can be defined internally within the XML document or externally, referencing data from an outside source.
+
+For example, an external entity references data from an external file or resource. In the following code, the entity `&ext;` could refer to an external file located at `"http://tryhackme.com/robots.txt"`, which would be loaded into the XML, if allowed by the system:
+
+```xml
+<!DOCTYPE people [
+   <!ENTITY ext SYSTEM "http://tryhackme.com/robots.txt">
+]>
+<people>
+   <name>Glitch</name>
+   <address>&ext;</address>
+   <email>glitch@wareville.com</email>
+   <phone>111000</phone>
+</people>
+```
+
+We are specifically discussing external entities because it is one of the main reasons that XXE is introduced if it is not properly managed.
+
+#### XML External Entity (XXE)
+
+After understanding XML and how entities work, we can now explore the XXE vulnerability. XXE is an attack that takes advantage of how XML parsers handle external entities. When a web application processes an XML file that contains an external entity, the parser attempts to load or execute whatever resource the entity points to. If necessary sanitisation is not in place, the attacker may point the entity to any malicious source/code causing the undesired behaviour of the web app.
+
+For example, if a vulnerable XML parser processes this external entity definition:
+
+```xml
+<!DOCTYPE people[
+   <!ENTITY thmFile SYSTEM "file:///etc/passwd">
+]>
+<people>
+   <name>Glitch</name>
+   <address>&thmFile;</address>
+   <email>glitch@wareville.com</email>
+   <phone>111000</phone>
+</people>
+```
+
+Here, the entity `&thmFile;` refers to the sensitive file `/etc/passwd` on a system. When the XML is processed, the parser will try to load and display the contents of that file, exposing sensitive information to the attacker.
+
+### Practical
+
+We are given IP of the target. Let's first visit the website to see what is there for us.
+
+![](day_5-homepage.png)
+
+We have a website for everyone to make a wish. Let's try making a wish.
+
+![](day_5-add-wish.png)
+
+We made a wish and it was added. Now, let's try going to the cart section.
+
+![](day_5-cart.png)
+
+We can see our wish list here. Let's checkout.
+
+![](day_5-checkout.png)
+
+After filling the details, our wish is saved as wish 21. Let's check it out.
+
+![](day_5-wish-denied.png)
+
+We cannot see the wish. It tells us that the wish is only visible to the Santa's elves, which might mean that only the admin can see the wish. Logical. Let's try capturing the requests in Burp Suite. We will be going through all the requests we made before.
+
+![](day_5-add-wish-request.png)
+
+This is the only request that we see the XML data. Let's send this to Repeater and try to modify the XML data. We are going to try to read the `/etc/passwd` file.
+
+![](day_5-xxe-poc.png)
+
+We can see the contents of the `/etc/passwd` file. This is a clear indication of XXE vulnerability. Let's try seeing all the wishes. Let's guess the root directory for the web is `/var/www/html`. As our wish are numbered 21, we can be sure that there are 20 wishes before ours.
+
+> What is the flag discovered after navigating through the wishes?
+> The flag is found in wish 15.
+
+### Conclusion
+
+It was confirmed that the application was vulnerable, and the developers were not at fault since they only wanted to give the townspeople something before Christmas. However, it became evident that bypassing security testing led to an application that did not securely handle incoming requests.
+
+As soon as the vulnerability was discovered, McSkidy promptly coordinated with the developers to implement the necessary mitigations. The following proactive approach helped to address the potential risks against XXE attacks:
+* **Disable External Entity Loading:** The primary fix is to disable external entity loading in our XML parser. In PHP, for example, we can prevent XXE by setting `libxml_disable_entity_loader(true)` before processing the XML.
+* **Validate and Sanitise User Input:** Always validate and sanitise the XML input received from users. This ensures that only expected data is processed, reducing the risk of malicious content being included in the request.
+
+After discovering the vulnerability, McSkidy immediately remembered that a `CHANGELOG` file exists within the web application. After checking, it can be seen that someone pushed the vulnerable code within the application after Software's team.
+
+![](day_5-changelog.png)
+
+With this discovery, McSkidy still couldn't confirm whether the Mayor intentionally made the application vulnerable. However, the Mayor had already become suspicious, and McSkidy began to formulate theories about his possible involvement.
