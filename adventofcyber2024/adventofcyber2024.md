@@ -11,6 +11,7 @@ Dive into the wonderful world of cyber security by engaging in festive beginner-
 * [[OPSEC] Day 1: Maybe SOC-mas music, he thought, doesn't come from a store?](#opsec-day-1-maybe-soc-mas-music-he-thought-doesnt-come-from-a-store)
 * [[Log Analysis] Day 2: One man's false positive is another man's potpourri](#log-analysis-day-2-one-mans-false-positive-is-another-mans-potpourri)
 * [[Log Analysis] Day 3: Even if I wanted to go, their vulnerabilities wouldn't allow it](#log-analysis-day-3-even-if-i-wanted-to-go-their-vulnerabilities-wouldnt-allow-it)
+* [[Atomic Red Team] Day 4: I'm all atomic inside!](#atomic-red-team-day-4-im-all-atomic-inside)
 
 ## [OPSEC] Day 1: Maybe SOC-mas music, he thought, doesn't come from a store?
 
@@ -593,3 +594,82 @@ Seems like we have RCE. And we even have sudo privileges. Let's check the files 
 
 > **RED:** What is the contents of the flag.txt?  
 > We have seen the `flag.txt` file in the previous `ls` command. Check the contents with `cat` and we have the flag.
+
+## [Atomic Red Team] Day 4: I'm all atomic inside!
+
+### The Story
+
+SOC-mas is approaching! And the town of Warewille started preparations for the grand event.
+
+Glitch, a quiet, talented security SOC-mas engineer, had a hunch that these year's celebrations would be different. With looming threats, he decided to revamp the town's security defences. Glitch began to fortify the town's security defences quietly and meticulously. He started by implementing a protective firewall, patching vulnerabilities, and accessing endpoints to patch for security vulnerabilities. As he worked tirelessly, he left "breadcrumbs", small traces of his activity.
+
+Unaware of Glitch's good intentions, the SOC team spotted anomalies: Logs showing admin access, escalation of privileges, patched systems behaving differently, and security tools triggering alerts. The SOC team misinterpreted the system modifications as a sign of an insider threat or rogue attacker and decided to launch an investigation using the Atomic Red Team framework.
+
+### Learning Objectives
+
+* Learn how to identify malicious techniques using the MITRE ATT&CK framework.
+* Learn about how to use Atomic Red Team tests to conduct attack simulations.
+* Understand how to create alerting and dectection rules from the attack tests.
+
+### Detection Gaps
+
+While it might be the utopian dream of every blue teamer, we will rarely be able to detect every attack or step in an attack kill chain. This is a reality that all blue teamers face: there are gaps in their detection. But worry not! These gaps do not have to be the size of black holes; there are things we can do to help make these gaps smaller.
+
+Detection gaps are usually for one of two main reasons:
+* **Security is a cat-and-mouse game.** As we detect more, the threat actors and red teamers will find new sneaky ways to thwart our detection. We then need to study these novel techniques and update our signature and alert rules to detect these new techniques.
+* **The line between anomalous and expected behaviour is often very fine and sometimes even has significant overlap.** For example, let's say we are a company based in the US. We expect to see almost all of our logins come from IP addresses in the US. One day, we get a login event from an IP in the EU, which would be an anomaly. However, it could also be our CEO travelling for business. This is an example where normal and malicious behaviour intertwine, making it hard to create accurate detection rules that would not have too much noise.
+
+Blue teams constantly refine and improve their detection rules to close the gaps they experience due to the two reasons mentioned above. Let's take a look at how this can be done!
+
+### Cyber Attacks and the Kill Chain
+
+Before diving into creating new detection rules, we first have to discuss some key topics. The first topic to discuss is the Cyber Kill chain. All cyber attacks follow a fairly standard process, which is explained quite well by the Unified Cyber Kill chain:
+
+![](day_4-unified-cyber-kill-chain.png)
+
+As a blue teamer, it would be our dream to prevent all attacks at the start of the kill chain. So even just when threat actors start their reconnaissance, we already stop them dead in their tracks. But, as discussed before, this is not possible.
+
+The goal then shifts slightly. If we are unable to fully detect and prevent a threat actor at any one phase in the kill chain, the goal becomes to perform detections across the entire kill chain in such a way that even if there are detection gaps in a single phase, the gap is covered in a later phase. The goal is, therefore, to ensure we can detect the threat actor before the very last phase of goal execution.
+
+### MITRE ATT&CK
+
+A popular framework for understanding the different techniques and tactics that threat actors perform through the kill chain is the MITRE ATT&CK framework. The framework is a collection of tactics, techniques, and procedures that have been seen to be implemented by real threat actors. However, the framework primarily discusses these TTPs in a theoretical manner. Even if we know we have a gap for a specific TTP, we don't really know how to test the gap or close it down. This is where the Atomics come in!
+
+### Atomic Red
+
+The Atomic Red Team library is a collection of red team test cases that are mapped to the MITRE ATT&CK framework. The library consists of simple test cases that can be executed by any blue team to test for detection gaps and help close them down. The library also supports automation, where the techniques can be automatically executed. However, it is also possible to execute them manually.
+
+### How to use Atomic Red
+
+Quick overview of the parameters:
+
+| **Parameter**       | **Description**                                                                      | **Example use**                                                                       |
+| ------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| `-AtomicTechnique`  | Defines what technique we want to emulate.                                           | `Invoke-AtomicTest -AtomicTechnique T1566.001`                                        |
+| `-ShowDetails`      | Shows the details of each test included in the Atomic.                               | `Invoke-AtomicTest T1566.001 -ShowDetails`                                            |
+| `-ShowDetailsBrief` | Shows the title of each test included in the Atomic.                                 | `Invoke-AtomicTest T1566.001 -ShowDetailsBrief`                                       |
+| `-CheckPrereqs`     | Provides a check if all necessary components are present for testing                 | `Invoke-AtomicTest T1566.001 -CheckPrereqs`                                           |
+| `-TestNames`        | Sets the tests we want to execute using the complete Atomic Test Name.               | `Invoke-AtomicTest T1566.001 -TestNames "Download Macro-Enabled Phishing Attachment"` |
+| `-TestGuids`        | Sets the tests we want to execute using the unique test identifier.                  | `Invoke-AtomicTest T1566.001 -TestGuids 114ccff9-ae6d-4547-9ead-4cd69f687306`         |
+| `-TestNumbers`      | Sets the tests we want to execute using the test number.                             | `Invoke-AtomicTest T1566.001 -TestNumbers 2,3`                                        |
+| `-Cleanup`          | Run the cleanup commands that were configured to revert our machine state to normal. | `Invoke-AtomicTest T1566.001 -TestNumbers 2 -Cleanup`                                 |
+
+### Answering questions
+
+> What was the flag found in the `.txt` file that is found in the same directory as the `PhishingAttachment.xslm` artefact?
+> We follow the instructions to find the flag.
+
+> What ATT&CK technique ID would be our point of interest?
+> Found on the MITRE ATT&CK framework.
+
+> What ATT&CK subtechnique ID focuses on the Windows Command Shell?
+> Found on the MITRE ATT&CK framework.
+
+> What is the name of the Atomic Test to be simulated?
+> We found one simulating BlackByte ransomware. The result is the name of this test.
+
+> What is the name of the file used in the test?
+> Found in the script of previously mentioned test.
+
+> What is the flag found from this Atomic Test?
+> Run the test and find out.
