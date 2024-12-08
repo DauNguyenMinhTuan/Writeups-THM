@@ -13,6 +13,7 @@ Dive into the wonderful world of cyber security by engaging in festive beginner-
 * [[Log Analysis] Day 3: Even if I wanted to go, their vulnerabilities wouldn't allow it](#log-analysis-day-3-even-if-i-wanted-to-go-their-vulnerabilities-wouldnt-allow-it)
 * [[Atomic Red Team] Day 4: I'm all atomic inside!](#atomic-red-team-day-4-im-all-atomic-inside)
 * [[XXE] Day 5: SOC-mas XX-what-ee?](#xxe-day-5-soc-mas-xx-what-ee)
+* [[Sandboxes] Day 6: If I can't find a nice malware to use, I'm not going.](#sandboxes-day-6-if-i-cant-find-a-nice-malware-to-use-im-not-going)
 
 ## [OPSEC] Day 1: Maybe SOC-mas music, he thought, doesn't come from a store?
 
@@ -819,3 +820,150 @@ After discovering the vulnerability, McSkidy immediately remembered that a `CHAN
 ![](day_5-changelog.png)
 
 With this discovery, McSkidy still couldn't confirm whether the Mayor intentionally made the application vulnerable. However, the Mayor had already become suspicious, and McSkidy began to formulate theories about his possible involvement.
+
+## [Sandboxes] Day 6: If I can't find a nice malware to use, I'm not going.
+
+### The Story
+
+*Mayor Malware was scheming, quite full of delight,*  
+*To ruin SOC-mas and frighten SOC teams.*  
+*But Glitch and McSkidy had spoiled his plan,*  
+*By uncovering secrets that exposed the man!*
+
+Mayor Malware slammed his hand on the table, his eyes narrowing as the report flashed on his screen. Glitch and McSkidy had uncovered his trail. He took a deep breath, calming himself. "No matter," he muttered, a sinister grin forming. "They may have found me but haven't stopped me." His confidence stemmed from the malware he had crafted—so devious and advanced that it would easily evade detection.
+
+But before unleashing it to wreak havoc on SOC teams and ruin SOC-mas, there was one final step. He needed to test it in a sandbox.
+
+### Learning Objectives
+
+* Analyze malware behaviour using sandbox tools.
+* Explore how to use YARA rules to detect malicious patterns.
+* Learn about various malware evasion techniques.
+* Implement an evasion technique to bypass YARA rule detection.
+
+### Detecting Sandboxes
+
+A sandbox is an isolated environment where (malicious) code is executed without affecting anything outside the system. Often, multiple tools are installed to monitor, record, and analyze the code's behaviour.
+
+Mayor Malware knows that before his malware executes, it needs to check if it is running on a Sandbox environment. If it is, then it should not continue with its malicious activity.
+
+To do so, he has settled on one technique, which checks if the directory `C:\Program Files` is present by querying the Registry path `HKLM\\Software\\Microsoft\\Windows\\CurrentVersion`.
+
+This directory is often absent on sandboxes or other virtualized environments, which could indicate that the malware is running in a sandbox.
+
+Here's what it looks like in the C Programming Language:
+
+```c
+void registryCheck() {
+    const char *registryPath = "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion";
+    const char *valueName = "ProgramFilesDir";
+    
+    // Prepare the command string for reg.exe
+    char command[512];
+    snprintf(command, sizeof(command), "reg query \"%s\" /v %s", registryPath, valueName);
+    // Run the command
+    int result = system(command);
+    // Check for successful execution
+    if (result == 0) {
+        printf("Registry query executed successfully.\n");
+    } else {
+        fprintf(stderr, "Failed to execute registry query.\n");
+    }
+}
+int main() {
+    const char *flag = "[REDACTED]";
+    registryCheck();
+        return 0;
+
+}
+```
+
+### Can YARA do it?
+
+Mayor Malware knows that McSkidy is a big fan of YARA rules.
+
+YARA is a tool used to identify and classify malware based on patterns in its code. By writing custom rules, analysts can define specific characteristics to look for - such as particular strings, file headers, or behaviours - and YARA will scan files or processes to find matches, making it invaluable for detecting malicious code.
+
+Mayor Malware does not think such a simple tool can detect his malware. But just to be sure, he has to test it out himself.
+
+To do this, he wrote a small script that executes a YARA detection rule every time a new event is added to the System monitor log. This particular YARA rule detects any command that tries to access the registry.
+
+```yara
+rule SANDBOXDETECTED
+{
+    meta:
+        description = "Detects the sandbox by querying the registry key for Program Path"
+        author = "TryHackMe"
+        date = "2024-10-08"
+        version = "1.1"
+
+    strings:
+        
+    $cmd= "Software\\Microsoft\\Windows\\CurrentVersion\" /v ProgramFilesDir" nocase
+
+    
+
+    condition:
+        $cmd
+}
+```
+
+Let's understand the contents:
+* In the `strings` section, we have defined variables that include the value to look out for: `$cmd`
+* In the `condition` section, we define when the rule will match the scanned file. In this case, if any of the specified strings are present.
+
+For his testing, Mayor Malware has set up a one-function script that runs the Yara rule and logs a true positive in `C:\Tools\YaraMatches.txt`. If our custom script did its job, we should have witnessed a popup by our EDR.
+
+### Adding More Evasion Techniques
+
+Ah, it seems that Yara can detect the evasion that Mayor Malware has added. No worries. Because we can make our malware even stealthier by introducing obfuscation.
+
+```c
+
+
+void registryCheck() {
+// Encoded PowerShell command to query the registry
+    const char *encodedCommand = "RwBlAHQALQBJAHQAZQBtAFAAcgBvAHAAZQByAHQAeQAgAC0AUABhAHQAaAAgACIASABLAEwATQA6AFwAUwBvAGYAdAB3AGEAcgBlAFwATQBpAGMAcgBvAHMAbwBmAHQAXABXAGkAbgBkAG8AdwBzAFwAQwB1AHIAcgBlAG4AdABWAGUAcgBzAGkAbwBuACIAIAAtAE4AYQBtAGUAIABQAHIAbwBnAHIAYQBtAEYAaQBsAGUAcwBEAGkAcgA=";
+    // Prepare the PowerShell execution command
+    char command[512];
+    snprintf(command, sizeof(command), "powershell -EncodedCommand %s", encodedCommand);
+
+    // Run the command
+    int result = system(command);
+
+    // Check for successful execution
+    if (result == 0) {
+        printf("Registry query executed successfully.\n");
+    } else {
+        fprintf(stderr, "Failed to execute registry query.\n");
+    }  
+}
+```
+
+The above code does the same thing: query the same registry key to get the information about the Program Data. The only difference is that the query is now encoded using base64, and the code uses the PowerShell to execute the query. The encoded string can be checked by decoding it using a tool like CyberChef.
+
+### Beware of Floss
+
+While obfuscation is helpful, we also need to know that there are tools available that extract obfuscated strings from malware binaries. One such tool is Floss, a powerful tool developed by Mandiant that functions similarly to the Linux strings tool but is optimized for malware analysis, making it ideal for revealing any concealed details.
+
+### Using YARA Rules on Sysmon Logs
+
+These YARA rules are becoming a pain to Mayor Malware's backside.
+
+If he wants his malware to be undetectable, he needs to research how YARA rules can be used to stop him. For example, his research tells him that YARA rules can also be used to check Sysmon logs for any artefacts left by malware! He'll need to test this as well.
+
+**Sysmon**, a tool from Microsoft's Sysinternals suite, continuously monitors and logs system activity across reboots. This Windows service provides detailed event data on process creation, network connections, and file changes - valuable insights when tracing malware behaviour.
+
+A YARA rule will look for events with `event id 1: Process created` for this to work. There are many entries in the Sysmon log. To make it easier to find the event we are looking for, we will apply a custom filter using the `EventRecordID` that we can see in the log `YaraMatches.txt` located in `C:\Tools`.
+
+### Never Gonna Give Up
+
+*His malware, it seemed, wasn't quite ready for town.*  
+*"There are watchers and scanners and rules by the ton!*  
+*If I'm not careful, they'll catch all my fun!"*
+
+Mayor Malware leaned back, tapping his fingers thoughtfully on the table. All of this research had revealed an unsettling truth: his malware, as cunning as it was, wasn't yet ready for the wild. There were too many tools and too many vigilant eyes - analysts armed with YARA rules, Sysmon, and a host of detection techniques that could expose his creation before it even had a chance to spread.
+
+He clenched his fist, a determined glint in his eye. "Just a little more fine-tuning," he murmured. He would study, adapt, and evolve his malware until it was truly undetectable. When the time was right, he would unleash it upon the unsuspecting SOC teams, striking when they least expected it.
+
+But for now, he would wait. Watching. Planning. And he was perfecting his craft in the shadows.
