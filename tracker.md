@@ -157,6 +157,7 @@
 3. Buffer Overflow Exploitation
    * Buffer Overflow Prep - [View Room](bufferoverflowprep)
    * Brainstorm - [View Room](brainstorm)
+   * Gatekeeper - [View Room](gatekeeper)
 
 ### Web Fundamentals
 1. How The Web Works
