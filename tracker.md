@@ -159,6 +159,16 @@
    * Brainstorm - [View Room](brainstorm)
    * Gatekeeper - [View Room](gatekeeper)
    * Brainpan 1 - [View Room](brainpan)
+4. Active Directory
+   * Active Directory Basics - [View Room](winadbasics)
+   * Breaching Active Directory - [View Room](breachingad)
+   * Enumerating Active Directory - [View Room](adenumeration)
+   * Lateral Movement and Pivoting - [View Room](lateralmovementandpivoting)
+   * Exploiting Active Directory - [View Room](exploitingad)
+   * Persisting Active Directory - [View Room](persistingad)
+   * Credentials Harvesting - [View Room](credharvesting)
+5. Extra Credit
+   * Hacking with Powershell - [View Room](powershell)
 
 ### Web Fundamentals
 1. How The Web Works
