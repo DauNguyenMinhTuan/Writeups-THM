@@ -158,6 +158,7 @@
    * Buffer Overflow Prep - [View Room](bufferoverflowprep)
    * Brainstorm - [View Room](brainstorm)
    * Gatekeeper - [View Room](gatekeeper)
+   * Brainpan 1 - [View Room](brainpan)
 
 ### Web Fundamentals
 1. How The Web Works
