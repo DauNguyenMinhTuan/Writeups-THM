@@ -171,6 +171,7 @@
    * Hacking with Powershell - [View Room](powershell)
    * Corp - [View Room](corp)
    * Mr Robot CTF
+   * Retro - [View Room](retro)
 
 ### Web Fundamentals
 1. How The Web Works
