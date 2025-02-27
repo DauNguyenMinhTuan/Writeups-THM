@@ -80,6 +80,13 @@
    * Persisting Active Directory - [View Room](persistingad)
    * Credentials Harvesting - [View Room](credharvesting)
 
+### Cyber Security 101
+1. Start Your Cyber Security Journey
+   * Careers in Cyber
+   * Offensive Security Intro
+   * Defensive Security Intro
+   * Search Skills - [View Room](searchskills)
+
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
 2. Introduction to Offensive Security
