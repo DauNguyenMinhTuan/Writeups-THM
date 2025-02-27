@@ -95,6 +95,8 @@
    * Windows Fundamentals 2
    * Windows Fundamentals 3
    * Active Directory Basics - [View Room](winadbasics)
+4. Command Line
+   * Windows Command Line - [View Room](windowscommandline)
 
 ### Introduction to Cyber Security
 1. Introduction to Cyber Security
