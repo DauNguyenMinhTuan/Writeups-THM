@@ -170,6 +170,7 @@
 5. Extra Credit
    * Hacking with Powershell - [View Room](powershell)
    * Corp - [View Room](corp)
+   * Mr Robot CTF
 
 ### Web Fundamentals
 1. How The Web Works
